@@ -4,7 +4,7 @@ import MainCointainer from './MainCointainer'
 
 const Body = () => {
   return (
-    <div>
+    <div className="flex">
     <Sidebar/>
     <MainCointainer/>
     </div>

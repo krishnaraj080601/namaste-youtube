@@ -1,8 +1,13 @@
 import React from 'react'
+import ButtonList from './ButtonList'
+import ViedoContainer from './ViedoContainer'
 
 const MainCointainer = () => {
   return (
-    <div>MainCointainer</div>
+    <div>
+    <ButtonList/>
+    <ViedoContainer/>
+    </div>
   )
 }
 
