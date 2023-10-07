@@ -2,7 +2,7 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import MainCointainer from './MainCointainer'
 import { Provider } from 'react-redux'
-import Store from './Utils/Store'
+import Store from '../Utils/Store'
 
 const Body = () => {
   return (
