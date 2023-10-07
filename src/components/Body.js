@@ -1,10 +1,6 @@
 import React from 'react'
 import Sidebar from './Sidebar'
 import MainCointainer from './MainCointainer'
-
-
-
-
 const Body = () => {
   return (
 
