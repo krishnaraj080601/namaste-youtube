@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { YOUTUBE_VIEDOS_API } from '../Utils/constant';
+import Card from './Card';
 
 const ViedoContainer = () => {
-  const [Viedos,setViedos]=useState([]);
+  const [Videos,setViedos]=useState([]);
   useEffect(()=>{
     getViedos();
   },[]);
@@ -14,6 +15,7 @@ const ViedoContainer = () => {
   };
   return (
     <div>
+    <Card info={Videos[0]}/>
     </div>
   )
 };
