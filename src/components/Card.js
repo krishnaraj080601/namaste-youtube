@@ -3,7 +3,7 @@ import React from 'react'
 const Card = ({info}) => {
     console.log(info);
    const { snippet, statistics} = info;
-   const { channelTitle, title, thumbnails } = snippet;
+  const { channelTitle, title, thumbnails } = snippet;
 
   return (
 
@@ -11,12 +11,13 @@ const Card = ({info}) => {
     <div className="p-2 m-2 w-72 shadow-lg">
     <img className="rounded-lg" alt="thumbnail" src={thumbnails.medium.url} />
     <ul>
-      <li className="font-bold py-2">{title}</li>
-      <li>{channelTitle}</li>
-      <li>{statistics.viewCount} views</li>
+    <li className="font-bold py-6">{channelTitle}</li>
+    <li>{title}</li>
+    <li>{statistics.viewCount} views</li>
+
+
     </ul>
-  </div>
-    
+    </div>
     </div>
   );
 };

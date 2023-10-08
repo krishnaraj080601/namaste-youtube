@@ -4,7 +4,7 @@ import ViedoContainer from './ViedoContainer'
 
 const MainCointainer = () => {
   return (
-    <div className="flex">
+    <div className="">
     <ButtonList/>
     <ViedoContainer/>
     </div>

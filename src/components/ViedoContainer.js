@@ -14,8 +14,8 @@ const ViedoContainer = () => {
     setViedos(json.items)
   };
   return (
-    <div>
-    <Card info={Videos[0]}/>
+    <div className="flex flex-wrap">
+    {Videos.map(Videos=><Card key={Videos.id} info={Videos}/>)}
     </div>
   )
 };
