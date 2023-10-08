@@ -3,7 +3,7 @@ import { YOUTUBE_VIEDOS_API } from '../Utils/constant';
 import Card from './Card';
 
 const ViedoContainer = () => {
-  const [Videos,setViedos]=useState([]);
+  const [videos,setViedos]=useState([]);
   useEffect(()=>{
     getViedos();
   },[]);
@@ -15,7 +15,7 @@ const ViedoContainer = () => {
   };
   return (
     <div>
-    <Card info={Videos[0]}/>
+    <Card info={videos[0]}/>
     </div>
   )
 };
