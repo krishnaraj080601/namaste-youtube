@@ -21,5 +21,10 @@ const Card = ({info}) => {
     </div>
   );
 };
+export const adCard=(Card)=>{
+  return (
+   <div className="p-1 m-1 border border-red-900"><Card/></div>
+  )
+}
 
 export default Card;
