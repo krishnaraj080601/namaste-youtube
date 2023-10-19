@@ -9,7 +9,10 @@ const Head = () => {
   
   useEffect(()=>{
     console.log(searchQuery);
-    getSearchSuggestion();
+   const timer=setTimeout(()=> getSearchSuggestion(),200);
+   return ()=>{
+    clearTimeout(timer);
+   }
   },[searchQuery])
   const getSearchSuggestion=async()=>{
     const data=await fetch(YOUTUBE_SEARCH_API+searchQuery);
