@@ -8,7 +8,7 @@ const Card = ({info}) => {
   return (
 
     <div>
-    <div className="p-2 m-2 w-72 shadow-lg">
+    <div className="p-2 m-2 w-72 shadow-lg ml-9 bg-gray-100">
     <img className="rounded-lg" alt="thumbnail" src={thumbnails.medium.url} />
     <ul>
     <li className="font-bold py-6">{channelTitle}</li>

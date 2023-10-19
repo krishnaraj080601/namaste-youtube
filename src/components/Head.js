@@ -43,7 +43,7 @@ const Head = () => {
 
   return (
    
-    <div className="grid grid-flow-col p-2 m-2  shadow-lg">
+    <div className="grid grid-flow-col p-2 m-2 shadow-lg ">
     <div className="flex col-span-3">
     <img onClick={()=>toggleMenuHandler()}
      className ="h-12 cursor-pointer"alt="menu"
@@ -54,7 +54,7 @@ const Head = () => {
     src="https://w7.pngwing.com/pngs/24/227/png-transparent-youtube-logo-youtube-text-trademark-logo-thumbnail.png"/>
     </a>
     </div>
-    <div className="col-span-10 px-2">
+    <div className="col-span-10 px-2 ">
     <div>
     <input className="w-1/2 border border-gray-500 p-2 rounded-l-full" type="text" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}
     onFocus={() => setShowSuggestions(true)}
