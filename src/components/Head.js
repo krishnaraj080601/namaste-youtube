@@ -43,7 +43,7 @@ const Head = () => {
 
   return (
    
-    <div className="grid grid-flow-col p-1 mt-0 m-2 ml-0 shadow-lg fixed top-0 w-full z-50 bg-white ">
+    <div className="grid grid-flow-col p-2 m-2  shadow-lg">
     <div className="flex col-span-3">
     <img onClick={()=>toggleMenuHandler()}
      className ="h-12 cursor-pointer"alt="menu"
