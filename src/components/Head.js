@@ -6,6 +6,7 @@ import { YOUTUBE_SEARCH_API } from '../Utils/constant';
 
 const Head = () => {
   const [searchQuery,setSearchQuery]=useState("");
+  const[suggestions,setSuggestion]=useState([]);
   
   useEffect(()=>{
    
@@ -19,6 +20,7 @@ const Head = () => {
     const data=await fetch(YOUTUBE_SEARCH_API+searchQuery);
     const json=await data.json();
     //console.log(json[1]);
+    setSuggestion(json[1]);
   }
   const dispatch =useDispatch();
   const toggleMenuHandler=()=>{
@@ -44,12 +46,10 @@ const Head = () => {
     <input className="w-1/2 border border-gray-500 p-2 rounded-l-full" type="text" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}/>
     <button className="border border-gray-600 py-2 px-5 bg-gray-100 rounded-r-full">🔍</button>
     </div>
-    <div className="fixed bg-white py-2 px-5 w-[37rem]">
+    <div className="fixed bg-white py-2 px-5 w-[37rem] shadow-lg rounded-lg border border-gray-100  ">
     <ul>
-    <li> 🔍 iphone</li>
-    <li> 🔍iphone max</li>
-    <li> 🔍iphone pro</li>
-    <li> 🔍iphone 14</li>
+    {suggestions.map(s=><li className='py-2 shadow-sm hover:bg-gray-100'> 🔍 {s}</li>)}
+    
     </ul>
     </div>
     </div>
