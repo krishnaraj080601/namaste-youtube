@@ -15,10 +15,10 @@ const Head = () => {
    }
   },[searchQuery])
   const getSearchSuggestion=async()=>{
-    console.log(searchQuery);
+    console.log("Api call-"+searchQuery);
     const data=await fetch(YOUTUBE_SEARCH_API+searchQuery);
     const json=await data.json();
-    console.log(json[1]);
+    //console.log(json[1]);
   }
   const dispatch =useDispatch();
   const toggleMenuHandler=()=>{
@@ -40,8 +40,18 @@ const Head = () => {
     </a>
     </div>
     <div className="col-span-10 px-2">
+    <div>
     <input className="w-1/2 border border-gray-500 p-2 rounded-l-full" type="text" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}/>
     <button className="border border-gray-600 py-2 px-5 bg-gray-100 rounded-r-full">🔍</button>
+    </div>
+    <div className="fixed bg-white py-2 px-5 w-[37rem]">
+    <ul>
+    <li> 🔍 iphone</li>
+    <li> 🔍iphone max</li>
+    <li> 🔍iphone pro</li>
+    <li> 🔍iphone 14</li>
+    </ul>
+    </div>
     </div>
     <div className="col-span-1">
     <img className="h-12"alt="user icon"
