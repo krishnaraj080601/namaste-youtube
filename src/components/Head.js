@@ -1,11 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleMenu } from '../Utils/appSlice';
+import { YOUTUBE_SEARCH_API } from '../Utils/constant';
 
 
 const Head = () => {
   const [searchQuery,setSearchQuery]=useState("");
-  console.log(searchQuery);
+  
+  useEffect(()=>{
+    console.log(searchQuery);
+    getSearchSuggestion();
+  },[searchQuery])
+  const getSearchSuggestion=async()=>{
+    const data=await fetch(YOUTUBE_SEARCH_API+searchQuery);
+    const json=await data.json();
+    console.log(json);
+  }
   const dispatch =useDispatch();
   const toggleMenuHandler=()=>{
     dispatch(toggleMenu());
