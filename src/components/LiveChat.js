@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addmessages } from '../Utils/chatsliceing';
-
+import ChatMessage from "./ChatMessage";
 const LiveChat = () => {
   const dispatch=useDispatch();
-  const ChatMessage = useSelector((store) => store.chat.messages);
+  const ChatMessages = useSelector((store) => store.chat.messages);
   useEffect(() => {
     const i = setInterval(() => {
       console.log("api calling");
@@ -20,10 +20,7 @@ const LiveChat = () => {
   return (
     <div className='w-full h-[600px] ml-2 p-2 border border-black bg-slate-100 rounded-lg '>
     <div>
-   {ChatMessage.map((c,i)=><ChatMessage key={i} 
-    name={c.name}
-    message={c.message}
-    />)}
+   {ChatMessages.map((c,i)=><ChatMessage key={i} name={c.name} message={c.message} />)}
     </div>
     </div>
   )
