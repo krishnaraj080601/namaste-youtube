@@ -14,16 +14,24 @@ const LiveChat = () => {
           message:makeRandomMessage(20) + " 🚀",
       }))
       
-    }, 2000);
+    }, 500);
 
     return () => clearInterval(i);
   }, []);
   return (
+    <>
     <div className='w-full h-[600px] ml-2 p-2 border border-black bg-slate-100 rounded-lg overflow-y-scroll flex flex-col-reverse"'>
     <div>
    {ChatMessages.map((c,i)=><ChatMessage key={i} name={c.name} message={c.message} />)}
     </div>
     </div>
+    <div className='w-full p-2 ml-2 border border-black'>
+    <input
+          className="px-2 w-96"
+          type="text"/>
+        <button className="px-2 mx-2 bg-green-100">Send</button>
+    </div>
+    </>
   )
 }
 
