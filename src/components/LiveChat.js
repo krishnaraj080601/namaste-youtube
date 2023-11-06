@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addmessages } from '../Utils/chatsliceing';
 import ChatMessage from "./ChatMessage";
-import { generateRandomName } from '../Utils/helper';
+import { generateRandomName, makeRandomMessage } from '../Utils/helper';
 const LiveChat = () => {
   const dispatch=useDispatch();
   const ChatMessages = useSelector((store) => store.chat.messages);
@@ -11,7 +11,7 @@ const LiveChat = () => {
       console.log("api calling");
       dispatch(addmessages({
         name:generateRandomName(),
-          message:"hi da"
+          message:makeRandomMessage(20) + " 🚀",
       }))
       
     }, 2000);
