@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ChatMessage = () => {
+const ChatMessage = ({name,message}) => {
   return (
     <div>
     <img
@@ -8,6 +8,8 @@ const ChatMessage = () => {
         alt="user"
         src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
       />
+      <span>{name}</span>
+      <span>{message}</span>
     </div>
   )
 }
