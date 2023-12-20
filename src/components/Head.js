@@ -50,7 +50,7 @@ const Head = () => {
     <div className="flex col-span-1">
     <img onClick={()=>toggleMenuHandler()}
      className ="h-12 cursor-pointer"alt="menu"
-     src={!themeChanger?"https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-5.png":"https://www.google.co.in/url?sa=i&url=https%3A%2F%2Fwww.vectorstock.com%2Froyalty-free-vector%2Fhamburger-like-menu-dark-mode-glyph-ui-icon-vector-43353301&psig=AOvVaw3_4axfhgDho-NJG1KL9h2E&ust=1703189106069000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCJC0gv_nnoMDFQAAAAAdAAAAABAE"}
+     src={!themeChanger?"https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-5.png":"https://cdn.imgbin.com/10/13/12/imgbin-hamburger-button-menu-computer-icons-menu-LskVccPCtLK6qaJp5fHGQdenC.jpg"}
     />
     <a href="/">
     <img className="h-12 mx-2" alt="logo"
