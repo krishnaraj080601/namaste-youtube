@@ -45,7 +45,7 @@ const Head = () => {
 
   return (
    
-    <div className="p-5 shadow-lg w-48 ">
+    <div className="p-5 shadow-lg w-48">
     <div className="flex col-span-1">
     <img onClick={()=>toggleMenuHandler()}
      className ="h-12 cursor-pointer"alt="menu"
