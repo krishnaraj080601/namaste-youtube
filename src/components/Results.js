@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { SEARCH_RESULT_API } from '../utils/constants';
+import { SEARCH_RESULT_API } from '../Utils/constant';
 import { Link, useSearchParams } from 'react-router-dom';
 import ResultCard from './ResultCard';
 
