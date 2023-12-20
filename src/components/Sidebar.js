@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const isMenuOpen=useSelector((store)=>store.app.isMenuOpen);
+  const themeChanger = useSelector(store=>store.theme.isDark)
   if(!isMenuOpen) return null;
   return (
     
-    <div className="p-5 shadow-lg w-48 ">
+    <div className={`p-5 h-screen  col-span-1 w-64 mt-[4.2rem] ${!themeChanger?'bg-white':'bg-black text-white'}`}>
     <ul>
     <li><Link to="/">Home</Link></li>
     <li>Shorts</li>
