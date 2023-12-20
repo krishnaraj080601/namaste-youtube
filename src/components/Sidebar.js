@@ -8,7 +8,7 @@ const Sidebar = () => {
   if(!isMenuOpen) return null;
   return (
     
-    <div  className={`p-5 h-screen  col-span-1 w-64 mt-[4.2rem] ${!themeChanger?'bg-white':'bg-black text-white'}`}>
+    <div  className={`p-5 shadow-lg w-48 fixed l-0 overflow-y-scroll h-screen max-h-[85vh]' ${!themeChanger?'bg-white':'bg-black text-white'}`}>
     <ul>
     <li><Link to="/">Home</Link></li>
     <li>Shorts</li>

@@ -45,7 +45,7 @@ const Head = () => {
 
   return (
    
-    <div className={`grid grid-flow-col p-5 m-2 fixed w-full ${themeChanger ? 'bg-black text-white' : 'bg-white'}`}>
+    <div className="grid grid-flow-col p-5 m-2 shadow-lg">
     <div className="flex col-span-1">
     <img onClick={()=>toggleMenuHandler()}
      className ="h-12 cursor-pointer"alt="menu"
