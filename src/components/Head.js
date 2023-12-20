@@ -46,7 +46,7 @@ const Head = () => {
 
   return (
    
-    <div className={`pl-6 pr-2 py-1 grid grid-flow-col items-center shadow ${themeChanger ? 'bg-black text-white' : 'bg-black'}`} >
+    <div className={`pl-6 pr-2 py-1 grid grid-flow-col items-center shadow ${themeChanger ? 'bg-black text-white' : 'bg-white'}`} >
     <div className="flex col-span-1">
     <img onClick={()=>toggleMenuHandler()}
      className ="h-12 cursor-pointer"alt="menu"
