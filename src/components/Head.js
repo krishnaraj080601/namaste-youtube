@@ -46,7 +46,7 @@ const Head = () => {
 
   return (
    
-    <div className={`pl-6 pr-2 py-1 grid grid-flow-col items-center shadow ${themeChanger ? 'bg-black text-white' : 'bg-white'}`} >
+    <div className={`pl-6 pr-2 py-1 grid grid-flow-col items-center shadow ${themeChanger ? 'bg-black text-white' : 'bg-black'}`} >
     <div className="flex col-span-1">
     <img onClick={()=>toggleMenuHandler()}
      className ="h-12 cursor-pointer"alt="menu"
@@ -65,7 +65,7 @@ const Head = () => {
     />
     <button onClick={() => window.location.href = "/results?search_query=" + searchQuery} className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
     </div>
-    {showSuggestions &&( <div className= {`px-5 h-10 absolute  border ${!themeChanger? ' bg-white border-gray-700 ':' bg-gray border-white-700 ' }` }>
+    {showSuggestions &&( <div className= {`px-5 h-10 absolute  border ${!themeChanger? ' bg-white border-gray-700 ':' bg-black border-white-700 ' }` }>
     <ul>
     
      {suggestions.map(s=>(<li key={s} className='py-2 shadow-sm hover:bg-gray-100'> 🔍 {s}</li>))}
