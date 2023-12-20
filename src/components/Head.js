@@ -63,17 +63,14 @@ const Head = () => {
     />
     <button onClick={() => window.location.href = "/results?search_query=" + searchQuery} className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
     </div>
-   {showSuggestions &&( <div className="fixed bg-white py-2 px-5 w-[37rem] shadow-lg rounded-lg border border-gray-100  ">
+    {showSuggestions &&( <div className="fixed bg-white py-2 px-5 w-[37rem] shadow-lg rounded-lg border border-gray-100  ">
     <ul>
-    {suggestions.map((s, index) => s[0] && (
-                                <li
-                                    onClick={() =>{}}
-                                    key={index}
-                                    className="py-2 px-3 shadow-sm hover:bg-gray-200"
-                                >
-                                    <Link to={`/results?search_query=${s}`} >🔍{s}</Link>
-                                </li>
-                            ))}
+    {suggestions.map(s=>(
+    <li 
+    key={s} className='py-2 shadow-sm hover:bg-gray-100'> 
+    <Link to={`/results?search_query=${s}`} >🔍{s}</Link>
+    </li>))}
+    
     </ul>
     </div>
    )}
