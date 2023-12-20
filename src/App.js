@@ -7,6 +7,7 @@ import store from './Utils/store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainCointainer from './components/MainCointainer';
 import ViedosWatching from './components/ViedosWatching';
+import Results from './components/Results';
 const appRouter=createBrowserRouter([{
   path:"/",
   element:<Body/>,
@@ -18,6 +19,10 @@ const appRouter=createBrowserRouter([{
     {
       path:"watch",
       element:<ViedosWatching/>
+    },
+    {
+      path: "/results",
+      element: <Results/>
     }
   ]
 }])
