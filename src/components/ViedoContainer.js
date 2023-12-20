@@ -17,7 +17,7 @@ const ViedoContainer = () => {
     setViedos(json.items)
   };
   return (
-    <div className={`flex flex-wrap ${themeChanger?'bg-black':''}`}>
+    <div className={`flex flex-wrap mt-36 ml-24 ${themeChanger?'bg-black':''}`}>
     {Videos[0] && <AdVideoCard info={Videos[0]} />}
     {Videos.map((Videos)=>(
        (<Link to={"/watch?v="+Videos.id}><Card key={Videos.id} info={Videos}/>
