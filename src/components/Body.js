@@ -7,7 +7,10 @@ const Body = () => {
   return (
 
     <div className={`flex ${themeChanger?'bg-black':''}`} >
-    <Sidebar/>
+  <div className={`w-64 fixed border border-none overflow-y-hidden ${themeChanger?'bg-black':''} `}>
+     <Sidebar/>
+     </div>
+    
     <Outlet/>
     </div>
   )
