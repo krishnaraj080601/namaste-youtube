@@ -11,6 +11,7 @@ const Head = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchCache=useSelector((store)=>store.search);
   const themeChanger = useSelector(store=>store.theme.isDark)
+
   const dispatch=useDispatch();
   useEffect(()=>{
    
@@ -45,7 +46,7 @@ const Head = () => {
 
   return (
    
-    <div className="pl-6 pr-2 py-1 grid grid-flow-col items-center shadow">
+    <div className={`pl-6 pr-2 py-1 grid grid-flow-col items-center shadow ${themeChanger ? 'bg-black text-white' : 'bg-white'}`} >
     <div className="flex col-span-1">
     <img onClick={()=>toggleMenuHandler()}
      className ="h-12 cursor-pointer"alt="menu"
@@ -58,7 +59,7 @@ const Head = () => {
     </div>
     <div className="col-span-10 px-2 ">
     <div>
-    <input className="w-1/2 border border-gray-500 p-2 rounded-l-full" type="text" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}
+    <input className={`w-1/2 h-10 border ${!themeChanger? 'border-white-400':'border-gray-600 bg-gray-800'} rounded-l-full  pl-5`}  type="text" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}
     onFocus={() => setShowSuggestions(true)}
     onBlur={() => setShowSuggestions(false)}
     />
