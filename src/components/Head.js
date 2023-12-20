@@ -65,7 +65,7 @@ const Head = () => {
     />
     <button onClick={() => window.location.href = "/results?search_query=" + searchQuery} className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
     </div>
-    {showSuggestions &&( <div className= {`px-5 h-10 absolute  border ${!themeChanger? ' bg-white border-gray-700 ':'bg-black border-gray-700 ' }` }>
+    {showSuggestions &&( <div className= {`px-5 h-10 absolute  border ${!themeChanger? ' bg-white border-gray-700 ':' bg-gray border-white-700 ' }` }>
     <ul>
     
      {suggestions.map(s=>(<li key={s} className='py-2 shadow-sm hover:bg-gray-100'> 🔍 {s}</li>))}
