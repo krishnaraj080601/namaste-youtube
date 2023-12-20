@@ -59,13 +59,13 @@ const Head = () => {
     </div>
     <div className="col-span-10 px-2 ">
     <div>
-    <input className={`w-1/2 h-10 border ${!themeChanger? 'border-white-400':'border-gray-600 bg-gray-800'} rounded-l-full  pl-5`}  type="text" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}
+    <input className= "px-5 w-1/2 border border-gray-400 p-2 rounded-l-full" type="text" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}
     onFocus={() => setShowSuggestions(true)}
     onBlur={() => setShowSuggestions(false)}
     />
     <button onClick={() => window.location.href = "/results?search_query=" + searchQuery} className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
     </div>
-    {showSuggestions &&( <div className="fixed bg-white py-2 px-5 w-[37rem] shadow-lg rounded-lg border border-gray-100  ">
+    {showSuggestions &&( <div className= {`px-5 h-10 absolute  border ${!themeChanger? ' bg-white border-gray-700 ':'bg-black border-gray-700 ' }` }>
     <ul>
     
      {suggestions.map(s=>(<li key={s} className='py-2 shadow-sm hover:bg-gray-100'> 🔍 {s}</li>))}
