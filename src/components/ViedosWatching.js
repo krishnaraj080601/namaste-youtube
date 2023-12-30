@@ -6,6 +6,7 @@ import ViedosComments from './ViedosComments';
 import LiveChat from './LiveChat';
 import { YOUTUBE_MOVIE_DETAIL_API } from '../Utils/constant';
 import ViedoContainer from './ViedoContainer';
+import CommentsContainer from './ViedosComments';
 const ViedosWatching = () => {
     const [searchParams]=useSearchParams();
     const [videoDetails, setVideoDetails] = useState(null);
@@ -30,8 +31,9 @@ async function getVideoDetails() {
     <iframe width="1000" height="600" src={`https://www.youtube.com/embed/${videoID}`}title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
     {videoDetails?.items?.length > 0 && <VideoDetails videoDetails={videoDetails} />}
     </div>
-    <div className='w-full'>
+    <div className="md:w-3/12">
     <ViedoContainer isRecommendation={true} />
+    <CommentsContainer videoID={videoID} />
    <LiveChat/>
     </div>
     </div>
