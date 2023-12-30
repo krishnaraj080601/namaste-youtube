@@ -1,55 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../Utils/appSlice';
-import { YOUTUBE_SEARCH_API } from '../Utils/constant';
-import { cacheResults } from '../Utils/searchSlice';
 import { changeTheme } from '../Utils/themeSlice.js'
 import useYoutubeSearch from '../hooks/useYoutubeSearch.js';
 
 const Head = () => {
-  const [searchQuery,setSearchQuery]=useState("");
   
-
-  const searchCache=useSelector((store)=>store.search);
-  const themeChanger = useSelector(store=>store.theme.isDark)
   const youtubeSearch = useYoutubeSearch()
   const { search, suggestions, showSuggestions,setSearch, getSearchData, setShowSuggestions } = youtubeSearch
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+  };
+
   const onClickHandler = (suggestion) => {
     getSearchData(suggestion);
     setSearch(suggestion);
     setShowSuggestions(false);
   };
-  useEffect(()=>{
-   
-   const timer=setTimeout(()=> {
-    if (searchCache[searchQuery]) {
-      setShowSuggestions(searchCache[searchQuery]);
-   }
-   else{
-   getSearchSuggestion()
-   }
-  },200);
+  const themeChanger = useSelector(store=>store.theme.isDark)
   
-   return ()=>{
-    clearTimeout(timer);
-   }
-  },[searchQuery])
- 
-  const getSearchSuggestion=async()=>{
-    console.log("Api call-"+searchQuery);
-    const data=await fetch(YOUTUBE_SEARCH_API+searchQuery);
-    const json=await data.json();
-    //console.log(json[1]);
-    setShowSuggestions(json[1]);
-    dispatch(cacheResults({
-      [searchQuery]: json[1],
-    }))
-  }
-  const toggleMenuHandler=()=>{
-    dispatch(toggleMenu());
-
-  };
 
 
   return (
@@ -67,15 +37,20 @@ const Head = () => {
     </div>
     <div className="col-span-10 px-2 ">
     <div>
-    <input className={`w-1/2 h-10 border ${!themeChanger? 'border-gray-400':'border-gray-600 bg-gray-800'} rounded-l-full  pl-5`}type="text" value={searchQuery}
- onChange={(e) => setSearchQuery(e.target.value)}
+    <input className={`w-1/2 h-10 border ${!themeChanger? 'border-gray-400':'border-gray-600 bg-gray-800'} rounded-l-full  pl-5`}type="text"
+ onChange={(e) =>  setSearch(e.target.value)}
 onFocus={() => setShowSuggestions(true)}
     onBlur={() => setShowSuggestions(false)}
     
     />
+    {search !== "" && (
+                <div className="z-30 absolute top-2 right-[68px] font-bold text-gray-500 hover:text-gray-900 cursor-pointer" onClick={() => setSearch("")}>
+                  ╳
+                </div>
+              )}
     <button onClick={() => getSearchData(search)}  className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
     </div>
-    {showSuggestions &&( <div className= {`fixed bg-black py-2 px-2 w-[37rem] ${!themeChanger? ' bg-white border-gray-700 ':' bg-black border-white-700 ' }` }>
+    {showSuggestions &&  suggestions.length > 0 &&( <div className= {`fixed bg-black py-2 px-2 w-[37rem] ${!themeChanger? ' bg-white border-gray-700 ':' bg-black border-white-700 ' }` }>
     <ul>
     
      {suggestions.map ((s)=>(
