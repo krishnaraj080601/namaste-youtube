@@ -32,8 +32,9 @@ async function getVideoDetails() {
     <CommentsContainer/>
     </div>
     <div className="md:w-3/12">
+    <LiveChat/>
     <ViedoContainer isRecommendation={true} />
-   <LiveChat/>
+   
     </div>
     </div>
   
