@@ -1,9 +1,7 @@
-import React from 'react'
-
-import  { useEffect } from "react";
-import { YOUTUBE_COMMENTS_API } from '../Utils/constant';
+import React, { useEffect } from "react";
+import { YOUTUBE_COMMENTS_API } from "../Utils/constant";
 import { useDispatch, useSelector } from "react-redux";
-import { setComments } from '../Utils/commentsSlice';
+import { setComments } from "../Utils/commentsSlice";
 
 const Comment = ({ data }) => {
   return (
