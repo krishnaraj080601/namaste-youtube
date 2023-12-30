@@ -2,11 +2,10 @@ import React, { useEffect,useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { closeMenu } from '../Utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
-import ViedosComments from './ViedosComments';
+import CommentsContainer from './CommentsContainer';
 import LiveChat from './LiveChat';
 import { YOUTUBE_MOVIE_DETAIL_API } from '../Utils/constant';
 import ViedoContainer from './ViedoContainer';
-import CommentsContainer from './CommentsContainer';
 const ViedosWatching = () => {
     const [searchParams]=useSearchParams();
     const [videoDetails, setVideoDetails] = useState(null);
