@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { YOUTUBE_SEARCH_API, YOUTUBE_SEARCH_BY_KEYWORD_API } from "../utils/constants";
+import { YOUTUBE_SEARCH_API,YOUTUBE_SEARCH_BY_KEYWORD_API } from "../Utils/constant";
 import { cacheResults } from "../Utils/searchSlice";
 import { setVideos } from "../Utils/videoSlice";
 
