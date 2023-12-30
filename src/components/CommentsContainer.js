@@ -1,91 +1,79 @@
 import React from 'react'
-import CommentsList from './CommentsList';
+import CommentsList from './CommentList'
 
 const commentsData = [
-    {
-        name: 'Suhas Khulpe',
-        text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-        replies: []
-    },
-    {
-        name: 'Suhas Khulpe',
-        text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-        replies: [{
-            name: 'Suhas Khulpe',
-            text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-            replies: [{
-                name: 'Suhas Khulpe',
-                text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-                replies: [{
-                    name: 'Suhas Khulpe',
-                    text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-                    replies: [{
-                        name: 'Suhas Khulpe',
-                        text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-                        replies: [{
-                            name: 'Suhas Khulpe',
-                            text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-                            replies: []
-                        },]
-                    },]
-                },]
-            },]
-        },]
-    },
-    {
-        name: 'Suhas Khulpe',
-        text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-        replies: [{
-            name: 'Suhas Khulpe',
-            text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-            replies: []
-        },]
-    },
-    {
-        name: 'Suhas Khulpe',
-        text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-        replies: [{
-            name: 'Suhas Khulpe',
-            text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-            replies: []
-        },]
-    },
-    {
-        name: 'Suhas Khulpe',
-        text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-        replies: [{
-            name: 'Suhas Khulpe',
-            text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-            replies: []
-        },]
-    },
-    {
-        name: 'Suhas Khulpe',
-        text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-        replies: [{
-            name: 'Suhas Khulpe',
-            text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-            replies: []
-        },]
-    },
-    {
-        name: 'Suhas Khulpe',
-        text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-        replies: [{
-            name: 'Suhas Khulpe',
-            text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-            replies: [{
-                name: 'Suhas Khulpe',
-                text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-                replies: [{
-                    name: 'Suhas Khulpe',
-                    text: 'I am a fresher and I am able to answer 90% questions, feeling confident',
-                    replies: []
-                },]
-            },]
-        },]
-    }
-]
+  {
+    name: "Akshay Saini",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [],
+  },
+  {
+    name: "Akshay Saini",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [
+      {
+        name: "Akshay Saini",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [],
+      },
+      {
+        name: "Akshay Saini",
+        text: "Lorem ipsum dolor sit amet, consectetur adip",
+        replies: [
+          {
+            name: "Akshay Saini",
+            text: "Lorem ipsum dolor sit amet, consectetur adip",
+            replies: [
+              {
+                name: "Akshay Saini",
+                text: "Lorem ipsum dolor sit amet, consectetur adip",
+                replies: [
+                  {
+                    name: "Akshay Saini",
+                    text: "Lorem ipsum dolor sit amet, consectetur adip",
+                    replies: [
+                      {
+                        name: "Akshay Saini",
+                        text: "Lorem ipsum dolor sit amet, consectetur adip",
+                        replies: [],
+                      },
+                    ],
+                  },
+                  {
+                    name: "Akshay Saini",
+                    text: "Lorem ipsum dolor sit amet, consectetur adip",
+                    replies: [],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Akshay Saini",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [],
+  },
+  {
+    name: "Akshay Saini",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [],
+  },
+  {
+    name: "Akshay Saini",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [],
+  },
+  {
+    name: "Akshay Saini",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [],
+  },
+    ]
+   
 
 const CommentsContainer = () => {
     return (
