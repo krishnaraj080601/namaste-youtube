@@ -21,10 +21,7 @@ const appRouter=createBrowserRouter([{
       element:<ViedosWatching/>
     },
 
-     {
-            path: "search",
-            element:<SearchResultsPage />,
-          },
+    
   ]
 }])
 
