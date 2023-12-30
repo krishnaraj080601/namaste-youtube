@@ -54,7 +54,7 @@ onFocus={() => setShowSuggestions(true)}
     <ul>
     
      {suggestions.map ((s)=>(
-      <li onClick={() => onClickHandler(suggestions)} key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
+      <li onClick={() => onClickHandler(s)} key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
       🔍 {s}
     </li>
      ))}
