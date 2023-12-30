@@ -63,23 +63,18 @@ const Head = () => {
     <div className="col-span-10 px-2 ">
     <div>
     <input className={`w-1/2 h-10 border ${!themeChanger? 'border-gray-400':'border-gray-600 bg-gray-800'} rounded-l-full  pl-5`}type="text" value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-   onFocus={() => setShowSuggestions(true)}
+ onChange={(e) => setSearchQuery(e.target.value)}
+onFocus={() => setShowSuggestions(true)}
     onBlur={() => setShowSuggestions(false)}
-    onKeyDown={(e) => {
-      if (e.keyCode === 13) {
-          window.location.href = "/results?search_query=" + searchQuery;
-      }
-    }}
+    
     />
     <button onClick={() => window.location.href = "/results?search_query=" + searchQuery} className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
     </div>
     {showSuggestions &&( <div className= {`fixed bg-black py-2 px-2 w-[37rem] ${!themeChanger? ' bg-white border-gray-700 ':' bg-black border-white-700 ' }` }>
     <ul>
     
-     {suggestions.map ((s,index)=>s[0] && (
+     {suggestions.map ((s)=>(
      <li
-     key={index}
      className="py-2 px-3 shadow-sm hover:bg-gray-200"><Link to={`/results?search_query=${s}`} >🔍{s}</Link></li>))}
 
     
