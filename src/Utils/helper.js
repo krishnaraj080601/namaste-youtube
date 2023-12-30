@@ -190,4 +190,56 @@ var nameList = [
     return result;
   }
   
+  export function generateCount(num) {
+    let mappings = {
+      K: [1000, 999999],
+      M: [1000000, 999999999],
+      B: [1000000000, 999999999999],
+      T: [1000000000000, 999999999999999],
+    };
+  
+    let abs = Math.abs(num);
+  
+    for (var abbr in mappings) {
+      if (abs >= mappings[abbr][0] && abs <= mappings[abbr][1]) {
+        return Math.round(num / mappings[abbr][0]) + abbr;
+      }
+    }
+  
+    return num;
+  }
+  export function timeDifference(current, previous) {
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+  
+    var elapsed = current - previous;
+  
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' seconds ago';   
+    }
+  
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+    }
+  
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' hours ago';   
+    }
+  
+    else if (elapsed < msPerMonth) {
+        return Math.round(elapsed/msPerDay) + ' days ago';   
+    }
+  
+    else if (elapsed < msPerYear) {
+        return Math.round(elapsed/msPerMonth) + ' months ago';   
+    }
+  
+    else {
+        return Math.round(elapsed/msPerYear ) + ' years ago';   
+    }
+  }
+  
   

@@ -8,9 +8,10 @@ const MainCointainer = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   return (
     <div  className={isMenuOpen ? `${themeChanger ? 'bg-black' : ''}` : 'ml-10'}>
+          <Searchbar/>
     <ButtonList/>
     <ViedoContainer/>
-    <Searchbar/>
+
     </div>
   )
 }
