@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { YOUTUBE_SHORTS_API } from '../utils/constants';
+import { YOUTUBE_SHORTS_API } from '../Utils/constant'
 
 const ShortsContainer = () => {
   const [shortVideos,setShortVideos] = useState([])

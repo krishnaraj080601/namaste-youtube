@@ -1,4 +1,4 @@
-
+import ShortsContainer from './components/ShortsContainer';
 import { Provider } from 'react-redux';
 import './App.css';
 import Body from './components/Body';
@@ -21,7 +21,10 @@ const appRouter=createBrowserRouter([{
       element:<ViedosWatching/>
     },
 
-    
+    {
+      path: '/shorts',
+      element:<ShortsContainer/>
+    } 
   ]
 }])
 
