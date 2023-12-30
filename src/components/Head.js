@@ -4,22 +4,27 @@ import { toggleMenu } from '../Utils/appSlice';
 import { YOUTUBE_SEARCH_API } from '../Utils/constant';
 import { cacheResults } from '../Utils/searchSlice';
 import { changeTheme } from '../Utils/themeSlice.js'
-import { Link } from 'react-router-dom';
+import useYoutubeSearch from '../hooks/useYoutubeSearch.js';
 
 const Head = () => {
   const [searchQuery,setSearchQuery]=useState("");
-  const[suggestions,setSuggestion]=useState([]);
+  
 
-  const [showSuggestions, setShowSuggestions] = useState(false);
   const searchCache=useSelector((store)=>store.search);
   const themeChanger = useSelector(store=>store.theme.isDark)
-
+  const youtubeSearch = useYoutubeSearch()
+  const { search, suggestions, showSuggestions,setSearch, getSearchData, setShowSuggestions } = youtubeSearch
   const dispatch=useDispatch();
+  const onClickHandler = (suggestion) => {
+    getSearchData(suggestion);
+    setSearch(suggestion);
+    setShowSuggestions(false);
+  };
   useEffect(()=>{
    
    const timer=setTimeout(()=> {
     if (searchCache[searchQuery]) {
-      setSuggestion(searchCache[searchQuery]);
+      setShowSuggestions(searchCache[searchQuery]);
    }
    else{
    getSearchSuggestion()
@@ -36,7 +41,7 @@ const Head = () => {
     const data=await fetch(YOUTUBE_SEARCH_API+searchQuery);
     const json=await data.json();
     //console.log(json[1]);
-    setSuggestion(json[1]);
+    setShowSuggestions(json[1]);
     dispatch(cacheResults({
       [searchQuery]: json[1],
     }))
@@ -68,14 +73,16 @@ onFocus={() => setShowSuggestions(true)}
     onBlur={() => setShowSuggestions(false)}
     
     />
-    <button onClick={() => window.location.href = "/results?search_query=" + searchQuery} className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
+    <button onClick={() => getSearchData(search)}  className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
     </div>
     {showSuggestions &&( <div className= {`fixed bg-black py-2 px-2 w-[37rem] ${!themeChanger? ' bg-white border-gray-700 ':' bg-black border-white-700 ' }` }>
     <ul>
     
      {suggestions.map ((s)=>(
-     <li
-     className="py-2 px-3 shadow-sm hover:bg-gray-200"><Link to={`/results?search_query=${s}`} >🔍{s}</Link></li>))}
+      <li onClick={() => onClickHandler(suggestions)} key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
+      🔍 {s}
+    </li>
+     ))}
 
     
     </ul>
