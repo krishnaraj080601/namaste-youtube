@@ -2,7 +2,7 @@ import { toggleSearch } from "../Utils/appSlice";
 import useYoutubeSearch from "../hooks/useYoutubeSearch";
 import { useDispatch, useSelector } from "react-redux";
 
-const SearchBar = () => {
+const Searchbar = () => {
     const youtubeSearch = useYoutubeSearch();
     const { search, suggestions, showSuggestions, setSearch, getSearchData, setShowSuggestions } = youtubeSearch;
     const dispatch = useDispatch();
@@ -57,4 +57,4 @@ const SearchBar = () => {
     );
   };
   
-  export default SearchBar;
+  export default Searchbar;
