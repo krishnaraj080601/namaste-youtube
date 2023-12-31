@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSearch } from "../utils/slice/appSlice";
+import { toggleSearch } from "../Utils/appSlice";
 import useYoutubeSearch from "../hooks/useYoutubeSearch";
 
 const Search = () => {
