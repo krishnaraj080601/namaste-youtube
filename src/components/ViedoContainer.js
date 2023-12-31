@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { YOUTUBE_VIEDOS_API } from '../Utils/constant';
-import Card, { AdVideoCard } from './Card';
+import Card from './Card';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setVideos } from '../Utils/videoSlice';
 
 const ViedoContainer = () => {
-  const [Videos,setViedos]=useState([]);
+  const dispatch = useDispatch();
+  const videos = useSelector((store) => store.video.videos);
   useEffect(()=>{
     getViedos();
   },[]);
@@ -14,12 +16,12 @@ const ViedoContainer = () => {
     const data=await fetch(YOUTUBE_VIEDOS_API);
     const json=await data.json();
     console.log(json.items);
-    setViedos(json.items)
+    dispatch(setVideos(json.items))
   };
   return (
    <div className={`flex flex-wrap mt-36 ml-24 ${themeChanger?'bg-black':''}`} >
-      {Videos[0] && <AdVideoCard info={Videos[0]} />}
-      {Videos.map((video) => (
+      
+      {videos.map((video) => (
         <Link key={video.id} to={"/watch?v=" + video.id}>
           <Card info={video} />
         </Link>

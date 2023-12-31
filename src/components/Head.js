@@ -24,14 +24,14 @@ const Head = () => {
   return (
     <div className="fixed bg-white w-full grid grid-flow-col p-4 border-b border-gray-200 ">
     <div className="col-span-2 md:col-span-1 flex items-center justify-start">
-      <img onClick={toggleMenuHandler} className="hidden md:block cursor-pointer w-12 rounded-full hover:bg-gray-100 p-2" src="https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-5.png" alt="menu" />
+      <img onClick={toggleMenuHandler} className="hidden md:block cursor-pointer w-12 rounded-full hover:bg-gray-100 p-2" src="" alt="menu" />
       <a href="/" className="w-full">
-        <img className="cursor-pointer w-24 md:pl-2 md:w-36" src="https://www.freepnglogos.com/uploads/youtube-logo-icon-transparent---32.png" alt="logo" />
+        <img className="cursor-pointer w-24 md:pl-2 md:w-36" src="" alt="logo" />
       </a>
     </div>
     <div className="col-span-10 md:col-span-9 flex justify-end items-center md:block">
       <div className="sm:flex md:hidden sm:justify-center sm:items-center" onClick={()=>dispatch(toggleSearch())}>
-        <img className="rounded-full p-2" src="https://www.svgrepo.com/show/7109/search.svg" alt="search"/>
+        <img className="rounded-full p-2" src="" alt="search"/>
       </div>
       <div className="hidden md:flex justify-center items-center">
         <div className="relative">
@@ -49,7 +49,7 @@ const Head = () => {
               </div>
             )}
             <button onClick={() =>getSearchData (search)} className="rounded-r-full p-2 bg-gray-100 px-4 border border-gray-200">
-              <img src="https://www.svgrepo.com/show/7109/search.svg" alt="search" />
+              <img src="" alt="search" />
             </button>
           </div>
           {showSuggestions && suggestions.length > 0 && (
