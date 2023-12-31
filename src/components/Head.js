@@ -2,26 +2,57 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../Utils/appSlice';
 import { changeTheme } from '../Utils/themeSlice.js'
-import useYoutubeSearch from '../hooks/useYoutubeSearch.js';
-
+import { useState,useEffect } from 'react';
+import { YOUTUBE_SEARCH_API } from '../Utils/constant.js';
+import { cacheResults } from "../Utils/searchSlice";
 const Head = () => {
-  
-  const youtubeSearch = useYoutubeSearch()
-  const { search, suggestions, showSuggestions,setSearch, getSearchData, setShowSuggestions } = youtubeSearch
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
+  const themeChanger = useSelector(store=>store.theme.isDark)
+  /**
+   *  searchCache = {
+   *     "iphone": ["iphone 11", "iphone 14"]
+   *  }
+   *  searchQuery = iphone
+   */
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSugsestions();
+      }
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
+
+  const getSearchSugsestions = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const json = await data.json();
+    //console.log(json[1]);
+    setSuggestions(json[1]);
+
+    // update cache
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
+  };
+
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
 
-  const onClickHandler = (suggestion) => {
-    getSearchData(suggestion);
-    setSearch(suggestion);
-    setShowSuggestions(false);
-  };
-  const themeChanger = useSelector(store=>store.theme.isDark)
   
-
-
   return (
    
     <div className={`sticky top-0  pl-6 pr-2 py-1 grid grid-flow-col items-center shadow ${themeChanger ? 'bg-black text-white' : 'bg-white'}`} >
@@ -38,23 +69,20 @@ const Head = () => {
     <div className="col-span-10 px-2 ">
     <div>
     <input className={`w-1/2 h-10 border ${!themeChanger? 'border-gray-400':'border-gray-600 bg-gray-800'} rounded-l-full  pl-5`}type="text"
- onChange={(e) =>  setSearch(e.target.value)}
+ value={searchQuery}
+ onChange={(e) => setSearchQuery(e.target.value)}
 onFocus={() => setShowSuggestions(true)}
     onBlur={() => setShowSuggestions(false)}
     
     />
-    {search !== "" && (
-                <div className="z-30 absolute top-2 right-[68px] font-bold text-gray-500 hover:text-gray-900 cursor-pointer" onClick={() => setSearch("")}>
-                  ╳
-                </div>
-              )}
-    <button onClick={() => getSearchData(search)}  className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
+    
+    <button className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
     </div>
     {showSuggestions &&  suggestions.length > 0 &&( <div className= {`fixed bg-black py-2 px-2 w-[37rem] ${!themeChanger? ' bg-white border-gray-700 ':' bg-black border-white-700 ' }` }>
     <ul>
     
      {suggestions.map ((s)=>(
-      <li onClick={() => onClickHandler(s)} key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
+      <li key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
       🔍 {s}
     </li>
      ))}
