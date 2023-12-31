@@ -10,3 +10,4 @@ export const YOUTUBE_CHANNEL_DETAILS_API = "https://youtube.googleapis.com/youtu
 export const YOUTUBE_SHORTS_API="https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoDuration=short&key=" +
 google_api_key+
 "&q=trendingshorts";
+export const VIDEO_DETAILS_API= "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key="+google_api_key+"&id="
