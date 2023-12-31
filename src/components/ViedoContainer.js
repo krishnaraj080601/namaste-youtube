@@ -17,14 +17,15 @@ const ViedoContainer = () => {
     setViedos(json.items)
   };
   return (
-    <div className={`flex flex-wrap ${themeChanger?'bg-black':''}`}>
-    {Videos[0] && <AdVideoCard info={Videos[0]} />}
-    {Videos.map((Videos)=>(
-       (<Link to={"/watch?v="+Videos.id + "&sq_ch=" + Videos.snippet.channelId }  ><Card key={Videos.id} info={Videos}/>
-       </Link>)
-  )
-  )}
+   <div className={`flex flex-wrap mt-36 ml-24 ${themeChanger?'bg-black':''}`} >
+      {Videos[0] && <AdVideoCard info={Videos[0]} />}
+      {Videos.map((video) => (
+        <Link key={video.id} to={"/watch?v=" + video.id}>
+          <Card info={video} />
+        </Link>
+      ))}
     </div>
+    
   )
 }
 
