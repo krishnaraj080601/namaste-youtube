@@ -1,97 +1,76 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { toggleMenu } from '../Utils/appSlice';
+import { useDispatch} from 'react-redux'
+import { toggleMenu,toggleSearch } from '../Utils/appSlice';
 import { changeTheme } from '../Utils/themeSlice.js'
-import { useState,useEffect } from 'react';
-import { YOUTUBE_SEARCH_API } from '../Utils/constant.js';
-import { cacheResults } from "../Utils/searchSlice";
+import useYoutubeSearch from '../hooks/useYoutubeSearch.js';
+
 const Head = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-
-  const searchCache = useSelector((store) => store.search);
+ 
+  
+  const youtubeSearch = useYoutubeSearch()
+  const {search,setSearch,suggestions,showSuggestions,setShowSuggestions,getSearchData}= youtubeSearch;
+  //const themeChanger = useSelector(store=>store.theme.isDark)
   const dispatch = useDispatch();
-  const themeChanger = useSelector(store=>store.theme.isDark)
-  /**
-   *  searchCache = {
-   *     "iphone": ["iphone 11", "iphone 14"]
-   *  }
-   *  searchQuery = iphone
-   */
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (searchCache[searchQuery]) {
-        setSuggestions(searchCache[searchQuery]);
-      } else {
-        getSearchSugsestions();
-      }
-    }, 200);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [searchQuery]);
-
-  const getSearchSugsestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-    const json = await data.json();
-    //console.log(json[1]);
-    setSuggestions(json[1]);
-
-    // update cache
-    dispatch(
-      cacheResults({
-        [searchQuery]: json[1],
-      })
-    );
-  };
-
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
+  };
+  const onClickHandler = (suggestion) => {
+    getSearchData(suggestion);
+    setSearch(suggestion);
+    setShowSuggestions(false);
   };
 
   
   return (
-   
-    <div className={`sticky top-0  pl-6 pr-2 py-1 grid grid-flow-col items-center shadow ${themeChanger ? 'bg-black text-white' : 'bg-white'}`} >
-    <div className="flex col-span-1">
-    <img onClick={()=>toggleMenuHandler()}
-     className ="h-12 cursor-pointer"alt="menu"
-     src={!themeChanger?"https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-5.png":"https://cdn.imgbin.com/10/13/12/imgbin-hamburger-button-menu-computer-icons-menu-LskVccPCtLK6qaJp5fHGQdenC.jpg"}
-    />
-    <a href="/">
-    <img className="h-12 mx-2" alt="logo"
-    src="https://www.freepnglogos.com/uploads/youtube-logo-icon-transparent---32.png"/>
-    </a>
+    <div className="fixed bg-white w-full grid grid-flow-col p-4 border-b border-gray-200 ">
+    <div className="col-span-2 md:col-span-1 flex items-center justify-start">
+      <img onClick={toggleMenuHandler} className="hidden md:block cursor-pointer w-12 rounded-full hover:bg-gray-100 p-2" src="https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-5.png" alt="menu" />
+      <a href="/" className="w-full">
+        <img className="cursor-pointer w-24 md:pl-2 md:w-36" src="https://www.freepnglogos.com/uploads/youtube-logo-icon-transparent---32.png" alt="logo" />
+      </a>
     </div>
-    <div className="col-span-10 px-2 ">
-    <div>
-    <input className={`w-1/2 h-10 border ${!themeChanger? 'border-gray-400':'border-gray-600 bg-gray-800'} rounded-l-full  pl-5`}type="text"
- value={searchQuery}
- onChange={(e) => setSearchQuery(e.target.value)}
-onFocus={() => setShowSuggestions(true)}
-    onBlur={() => setShowSuggestions(false)}
-    
-    />
-    
-    <button className="border border-gray-400 rounded-r-full p-1 w-10 bg-gray-100">🔍</button>
+    <div className="col-span-10 md:col-span-9 flex justify-end items-center md:block">
+      <div className="sm:flex md:hidden sm:justify-center sm:items-center" onClick={()=>dispatch(toggleSearch())}>
+        <img className="rounded-full p-2" src="https://www.svgrepo.com/show/7109/search.svg" alt="search"/>
+      </div>
+      <div className="hidden md:flex justify-center items-center">
+        <div className="relative">
+          <div className="flex justify-center items-center">
+            <input
+              onChange={(e) => setSearch(e.target.value)}
+              onFocus={() => setShowSuggestions(true)}
+              value={search}
+              className="w-[600px] rounded-l-full p-2 px-6 border border-gray-200"
+              type="text"
+            />
+            {search !== "" && (
+              <div className="z-30 absolute top-2 right-[68px] font-bold text-gray-500 hover:text-gray-900 cursor-pointer" onClick={() => setSearch("")}>
+                ╳
+              </div>
+            )}
+            <button onClick={() =>getSearchData (search)} className="rounded-r-full p-2 bg-gray-100 px-4 border border-gray-200">
+              <img src="https://www.svgrepo.com/show/7109/search.svg" alt="search" />
+            </button>
+          </div>
+          {showSuggestions && suggestions.length > 0 && (
+            <>
+              <div className="fixed top-0 left-0 z-10 w-screen h-screen" onClick={() => setShowSuggestions(false)}></div>
+              <div className="fixed bg-white py-2 px-4 border border-gray-300 rounded-lg w-[600px] z-50">
+                <ul className="">
+                  {suggestions.map((suggestion) => (
+                    <li key={suggestion} onClick={() => onClickHandler(suggestion)} className="hover:bg-gray-100 py-1 border-b border-gray-50 cursor-pointer flex">
+                      <img className="mx-1" src="./search.svg" alt="search" />
+                      {suggestion}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
     </div>
-    {showSuggestions &&  suggestions.length > 0 &&( <div className= {`fixed bg-black py-2 px-2 w-[37rem] ${!themeChanger? ' bg-white border-gray-700 ':' bg-black border-white-700 ' }` }>
-    <ul>
     
-     {suggestions.map ((s)=>(
-      <li key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
-      🔍 {s}
-    </li>
-     ))}
-
-    
-    </ul>
-    </div>
-   )}
-    </div>
     <div>
         <button className='' onClick={()=>{
           dispatch(changeTheme())
