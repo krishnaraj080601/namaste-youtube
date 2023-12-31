@@ -22,8 +22,8 @@ const Head = () => {
 
   
   return (
-    <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5">
-    <div className="flex h-5 items-center">
+    <div className='grid grid-flow-col col-span-10 p-5 shadow-lg sticky top-0 bg-white items-center'>
+    <div className='flex col-span-2 md:col-span-1'>
       <img onClick={toggleMenuHandler} className="h-12 cursor-pointer" src="https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-5.png"alt="menu" />
       <a href="/" className="w-full">
         <img className="h-12 mx-2" src="https://www.freepnglogos.com/uploads/youtube-logo-icon-transparent---32.png" alt="logo" />
