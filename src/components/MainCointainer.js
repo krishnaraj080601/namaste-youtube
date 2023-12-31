@@ -2,7 +2,8 @@ import React from 'react'
 import ButtonList from './ButtonList'
 import ViedoContainer from './ViedoContainer'
 import { useSelector } from 'react-redux'
-import Searchbar from './SearchBar'
+import Search from './Search'
+
 
 
 
@@ -13,7 +14,7 @@ const MainCointainer = () => {
     <div  className={isMenuOpen ? `${themeChanger ? 'bg-black' : ''}` : 'ml-10'}>
   
     <ButtonList/>
-  <Searchbar/>
+  <Search/>
     <ViedoContainer/>
 
     </div>
