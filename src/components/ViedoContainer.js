@@ -19,7 +19,7 @@ const ViedoContainer = () => {
     dispatch(setVideos(json.items))
   };
   return (
-   <div className={`flex flex-wrap mt-36 ml-24 ${themeChanger?'bg-black':''}`} >
+   <div className={`flex flex-wrap mt-30 ml-24 ${themeChanger?'bg-black':''}`} >
       
       {videos.map((video) => (
         <Link key={video.id} to={"/watch?v=" + video.id}>
